@@ -55,7 +55,11 @@ export default function Home() {
             </div>
           </div>
           <div className={styles.heroImage}>
-            <div className={styles.imagePlaceholder}></div>
+            <img 
+              src="/hero-image.png" 
+              alt="AI Agent Dashboard" 
+              className={styles.heroImg}
+            />
           </div>
         </section>
 
@@ -115,7 +119,7 @@ export default function Home() {
           <h2>Trusted by Forward-Thinking Startups</h2>
           <div className={styles.testimonialCards}>
             <div className={styles.testimonial}>
-              <p>"AgentFlow cut our AI procurement time by 70% and helped us find the perfect compliance-ready solution."</p>
+              <p>&ldquo;AgentFlow cut our AI procurement time by 70% and helped us find the perfect compliance-ready solution.&rdquo;</p>
               <div className={styles.testimonialAuthor}>
                 <div className={styles.avatar}></div>
                 <div>
