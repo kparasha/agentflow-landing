@@ -1,102 +1,165 @@
-import Image from "next/image";
+// src/app/page.tsx
+"use client";
+
+import { useState } from 'react';
+import Head from 'next/head';
+import styles from './page.module.css';
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [email, setEmail] = useState('');
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Submitted email:', email);
+    setEmail('');
+  };
+
+  return (
+    <div className={styles.container}>
+      <Head>
+        <title>AI Agent Marketplace - Find & Deploy AI Solutions Fast</title>
+        <meta name="description" content="Streamline your AI agent procurement process with our end-to-end platform. From vendor discovery to compliance checks and seamless onboarding." />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <nav className={styles.nav}>
+        <div className={styles.logo}>AgentFlow</div>
+        <div className={styles.navLinks}>
+          <a href="#solutions">Solutions</a>
+          <a href="#process">Process</a>
+          <a href="#testimonials">Testimonials</a>
+          <a href="#contact" className={styles.ctaButton}>Get Started</a>
         </div>
+      </nav>
+
+      <main className={styles.main}>
+        <section className={styles.hero}>
+          <div className={styles.heroContent}>
+            <h1>AI Agents, Simplified</h1>
+            <p className={styles.heroSubtitle}>
+              The end-to-end platform that helps startups find, evaluate, and deploy 
+              the perfect AI agents in days, not months.
+            </p>
+            <div className={styles.ctaContainer}>
+              <form onSubmit={handleSubmit} className={styles.emailForm}>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your work email"
+                  required
+                />
+                <button type="submit" className={styles.primaryButton}>Get Early Access</button>
+              </form>
+              <p className={styles.ctaNote}>Join our waitlist for early access</p>
+            </div>
+          </div>
+          <div className={styles.heroImage}>
+            <div className={styles.imagePlaceholder}></div>
+          </div>
+        </section>
+
+        <section id="pain-points" className={styles.painPoints}>
+          <h2>Stop Wasting Time on AI Agent Procurement</h2>
+          <div className={styles.cards}>
+            <div className={styles.card}>
+              <div className={styles.cardIcon}>🔍</div>
+              <h3>Endless Vendor Search</h3>
+              <p>No more sifting through hundreds of AI vendors. Our curated marketplace matches you with the perfect AI agents for your specific needs.</p>
+            </div>
+            <div className={styles.card}>
+              <div className={styles.cardIcon}>⚖️</div>
+              <h3>Compliance Headaches</h3>
+              <p>Automated compliance checks ensure every AI agent meets your security and regulatory requirements before you even see them.</p>
+            </div>
+            <div className={styles.card}>
+              <div className={styles.cardIcon}>⏱️</div>
+              <h3>Lengthy Trials</h3>
+              <p>Test multiple AI agents in parallel with our standardized trial environment and get real performance metrics.</p>
+            </div>
+            <div className={styles.card}>
+              <div className={styles.cardIcon}>📝</div>
+              <h3>Contract Complexity</h3>
+              <p>Streamlined contract management with standardized terms and e-signature capabilities to close deals faster.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="process" className={styles.process}>
+          <h2>From Search to Success in 4 Simple Steps</h2>
+          <div className={styles.steps}>
+            <div className={styles.step}>
+              <div className={styles.stepNumber}>1</div>
+              <h3>Define Your Needs</h3>
+              <p>Tell us about your business requirements and compliance needs.</p>
+            </div>
+            <div className={styles.step}>
+              <div className={styles.stepNumber}>2</div>
+              <h3>Match with Vendors</h3>
+              <p>Get matched with pre-vetted AI agents that fit your criteria.</p>
+            </div>
+            <div className={styles.step}>
+              <div className={styles.stepNumber}>3</div>
+              <h3>Test & Compare</h3>
+              <p>Run trials with multiple agents in a standardized environment.</p>
+            </div>
+            <div className={styles.step}>
+              <div className={styles.stepNumber}>4</div>
+              <h3>Deploy with Confidence</h3>
+              <p>Onboard your chosen agent with our support team by your side.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="testimonials" className={styles.testimonials}>
+          <h2>Trusted by Forward-Thinking Startups</h2>
+          <div className={styles.testimonialCards}>
+            <div className={styles.testimonial}>
+              <p>"AgentFlow cut our AI procurement time by 70% and helped us find the perfect compliance-ready solution."</p>
+              <div className={styles.testimonialAuthor}>
+                <div className={styles.avatar}></div>
+                <div>
+                  <h4>Sarah Chen</h4>
+                  <p>CTO, FinTech Startup</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" className={styles.ctaSection}>
+          <div className={styles.ctaContent}>
+            <h2>Ready to Transform Your AI Procurement?</h2>
+            <p>Join our waitlist for early access and be among the first to experience the future of AI agent procurement.</p>
+            <form onSubmit={handleSubmit} className={styles.ctaForm}>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your work email"
+                required
+              />
+              <button type="submit" className={styles.primaryButton}>Get Early Access</button>
+            </form>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      <footer className={styles.footer}>
+        <div className={styles.footerContent}>
+          <div className={styles.footerLogo}>AgentFlow</div>
+          <div className={styles.footerLinks}>
+            <a href="#about">About Us</a>
+            <a href="#solutions">Solutions</a>
+            <a href="#resources">Resources</a>
+            <a href="#contact">Contact</a>
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Terms of Service</a>
+          </div>
+          <div className={styles.copyright}>
+            © {new Date().getFullYear()} AgentFlow. All rights reserved.
+          </div>
+        </div>
       </footer>
     </div>
   );
